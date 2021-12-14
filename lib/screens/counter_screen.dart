@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 
-class CounterScreen extends StatelessWidget {
+class CounterScreen extends StatefulWidget {
   const CounterScreen({Key? key}) : super(key: key);
+
+  @override
+  State<CounterScreen> createState() => _CounterScreenState();
+}
+
+class _CounterScreenState extends State<CounterScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    // TODO: initialize counter bloc.
+  }
 
   @override
   Widget build(BuildContext context) {
