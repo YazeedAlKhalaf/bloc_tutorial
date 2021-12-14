@@ -1,3 +1,4 @@
+import 'package:bloc_tutorial/bloc/counter_bloc.dart';
 import 'package:flutter/material.dart';
 
 class CounterScreen extends StatefulWidget {
@@ -8,11 +9,14 @@ class CounterScreen extends StatefulWidget {
 }
 
 class _CounterScreenState extends State<CounterScreen> {
+  late final CounterBloc _counterBloc;
+
   @override
   void initState() {
     super.initState();
 
-    // TODO: initialize counter bloc.
+    // initialze counter bloc.
+    _counterBloc = CounterBloc();
   }
 
   @override
@@ -53,7 +57,10 @@ class _CounterScreenState extends State<CounterScreen> {
                 children: <Widget>[
                   IconButton(
                     onPressed: () {
-                      // TODO: add decrement event to counter bloc.
+                      // add decrement event to counter bloc.
+                      _counterBloc.eventSink.add(
+                        CounterEvent.decrement,
+                      );
                     },
                     icon: const Icon(
                       Icons.remove_rounded,
@@ -61,7 +68,10 @@ class _CounterScreenState extends State<CounterScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      // TODO: add reset event to counter bloc.
+                      // add reset event to counter bloc.
+                      _counterBloc.eventSink.add(
+                        CounterEvent.reset,
+                      );
                     },
                     icon: const Icon(
                       Icons.restore_rounded,
@@ -69,7 +79,10 @@ class _CounterScreenState extends State<CounterScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      // TODO: add increment event to counter bloc.
+                      // add increment event to counter bloc.
+                      _counterBloc.eventSink.add(
+                        CounterEvent.increment,
+                      );
                     },
                     icon: const Icon(
                       Icons.add_rounded,
