@@ -41,15 +41,21 @@ class _CounterScreenState extends State<CounterScreen> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 15),
-              const Text(
-                // TODO: replace this with the state from the counter bloc.
-                "0",
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 48,
-                ),
-                textAlign: TextAlign.center,
+              StreamBuilder<int>(
+                stream: _counterBloc.stateStream,
+                builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+                  final int counter = snapshot.data ?? 0;
+
+                  return Text(
+                    "$counter",
+                    style: const TextStyle(
+                      color: Colors.black54,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 48,
+                    ),
+                    textAlign: TextAlign.center,
+                  );
+                },
               ),
               const SizedBox(height: 15),
               Row(
